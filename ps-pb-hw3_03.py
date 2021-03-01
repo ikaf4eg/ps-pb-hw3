@@ -1,33 +1,38 @@
-def sum_4et(var_chet):
-    if var_chet != None:
-        sum_chet = 0
+'''Задача на анализ последовательности Фибоначчи, состоящей из чисел, 
+которые меньше 10.000.000 (десять миллионов). 
+'''
+# Функция вычисления суммы всех четных элементов последовательности
+def sum_even_numb(var_even):
+    sum_even = 0
+    f = 1
+    while f < len(var_even):
+        sum_even += var_even[f]
+        f += 2
+    return sum_even
+
+# Функция получения списка всех четных элементов
+def print_even_numb(var_even_list):
+    if var_even_list != None:
+        even_list = []
         f = 1
-        while f < len(var_chet):
-            sum_chet += var_chet[f]
+        while f < len(var_even_list):
+            even_list.append(var_even_list[f])
             f += 2
-    else:
-        sum_chet = 'Ошибка!'
-    return sum_chet
+    return even_list
 
 
-def print_4et(var_chet_list):
-    if var_chet_list != None:
-        chet_list = []
-        f = 1
-        while f < len(var_chet_list):
-            chet_list.append(var_chet_list[f])
-            f += 2
-    return chet_list
-
+fib_list = [1,1] # задание начала последовательности Фибоначчи
 i = 1
-fib_list = [1,1]
+# Получение последовательности Фибоначчи 
+# в диапазоне положительных чисел до 10 000 000
 while i < 10000000:
     x = len(fib_list)-1
     if i == (fib_list[x] + fib_list[x-1]):
         fib_list.append(i)
     i+=1
-print (fib_list)
-print(len(fib_list))
-print(sum_4et(fib_list))
-print(print_4et(fib_list))
-print(fib_list[len(fib_list)-2])
+
+print('Всего элементов в последовательности - ' + str(len(fib_list)))
+print('Сумма всех четных элементов в последовательности - ' + str(sum_even_numb(fib_list)))
+print('Список всех четных элементов в последовательности:')
+print(print_even_numb(fib_list))
+print('Предпоследний элемент в последовтальности - ' + str(fib_list[len(fib_list)-2]))
