@@ -4,20 +4,22 @@
 # Функция вычисления суммы всех четных элементов последовательности
 def sum_even_numb(var_even):
     sum_even = 0
-    f = 1
+    f = 0
     while f < len(var_even):
-        sum_even += var_even[f]
-        f += 2
+        if var_even[f] % 2 == 0:
+            sum_even += var_even[f]
+        f += 1
     return sum_even
 
 # Функция получения списка всех четных элементов
-def print_even_numb(var_even_list):
+def even_numb(var_even_list):
     if var_even_list != None:
         even_list = []
-        f = 1
+        f = 0
         while f < len(var_even_list):
-            even_list.append(var_even_list[f])
-            f += 2
+            if var_even_list[f] % 2 == 0:
+                even_list.append(var_even_list[f])
+            f += 1
     return even_list
 
 
@@ -31,8 +33,15 @@ while i < 10000000:
         fib_list.append(i)
     i+=1
 
+even_list = even_numb(fib_list)
+x = 0
+sum_even = 0
+while x < len(even_list):
+    sum_even += even_list[x]
+    x += 1
+
 print('Всего элементов в последовательности - ' + str(len(fib_list)))
-print('Сумма всех четных элементов в последовательности - ' + str(sum_even_numb(fib_list)))
+print('Сумма всех четных элементов в последовательности - ' + str(sum_even))
 print('Список всех четных элементов в последовательности:')
-print(print_even_numb(fib_list))
+print(even_list)
 print('Предпоследний элемент в последовтальности - ' + str(fib_list[len(fib_list)-2]))
